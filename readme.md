@@ -2,6 +2,19 @@
 
 Aplicación web desarrollada para aprender sobre Flask que implementa las operaciones básicas (Create, Read, Update, Delete) utilizando **Python**, **Flask** y **SQL Server**. Puedes usar este proyecto como gustes y hacer los cambios que quieras.
 
+<div align="center">
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC292B?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Cypress](https://img.shields.io/badge/-cypress-%2317202C?style=for-the-badge&logo=cypress&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+
+</div>
+
 ## 🛠️ Tecnologías Utilizadas
 
 * **Backend:** Python 3.x, Flask
