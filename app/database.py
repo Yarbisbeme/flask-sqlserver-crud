@@ -7,12 +7,12 @@ load_dotenv()
 SERVER = os.getenv('SERVER')
 DATABASE = os.getenv('DATABASE')
 UID = os.getenv('UID')
-PWD = os.getenv('PWD')
+DB_PASS= os.getenv('DB_PASS')
 TABLE = os.getenv('TABLE')
 
 def get_connection():
     try:
-        conn_str = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};UID={UID};PWD={PWD};TrustServerCertificate=yes'
+        conn_str = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};UID={UID};PWD={DB_PASS};TrustServerCertificate=yes'
         return pyodbc.connect(conn_str)
     except Exception as e:
         print("Error al conectar a la base de datos:", e)

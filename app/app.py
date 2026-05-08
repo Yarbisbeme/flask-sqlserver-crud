@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, abort
 import database as db
 
-# Inicializa la base de datos al arrancar
-db.init_db()
-
 app = Flask(__name__) 
 
+# Inicializa la base de datos al arrancar
+with app.app_context():
+    try:
+        db.init_db()
+    except Exception as e:
+        print(f"Failed to initialize database: {e}")
 
 # region READ
 @app.route('/')
