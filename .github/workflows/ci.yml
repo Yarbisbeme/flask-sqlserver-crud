@@ -10,28 +10,29 @@ jobs:
   test-and-verify:
     runs-on: ubuntu-latest
 
-    # Servicios en segundo plano (Levantamos SQL Server local para las pruebas)
     services:
       mssql:
         image: mcr.microsoft.com/mssql/server:2022-latest
         env:
           ACCEPT_EULA: "Y"
-          MSSQL_SA_PASSWORD: "PasswordEikon2026!"
+          MSSQL_SA_PASSWORD: "Strong_Pass_123!" 
         ports:
           - 1433:1433
+        options: >-
+          --health-cmd "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Strong_Pass_123!' -Q 'SELECT 1' -C"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-      # 1. Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-size: '3.x'
+          python-version: '3.11'
 
-      # 3. Instalar herramientas de sistema necesarias para pyodbc en Linux
       - name: Install SQL Server ODBC Drivers (Linux)
         run: |
           sudo apt-get update
@@ -41,32 +42,35 @@ jobs:
           sudo apt-get update
           sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
 
-      # 4. Instalar dependencias de Python
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install flask pyodbc python-dotenv
 
-      # 5. Crear archivo .env de prueba para el entorno virtual de GitHub
       - name: Create temporary .env file
         run: |
           echo "SERVER=localhost" >> .env
           echo "DATABASE=tempdb" >> .env
           echo "UID=sa" >> .env
-          echo "PWD=PasswordEikon2026!" >> .env
+          echo "PWD=Strong_Pass_123!" >> .env
           echo "TABLE=colaboradores" >> .env
 
-      # 6. Levantar la aplicación de Flask en segundo plano
+      - name: Wait for SQL Server to be ready
+        run: |
+          docker ps -a
+          until nc -z -v -w30 localhost 1433; do
+            echo "Esperando a que SQL Server responda en el puerto 1433..."
+            sleep 5
+          done
+
       - name: Start Flask App
         run: |
           python ./app/app.py &
         env:
           FLASK_ENV: testing
 
-      # 7. Ejecutar las pruebas E2E con Cypress
-      # Esta acción oficial de Cypress se encarga de instalar Node, Cypress y correr los tests
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://127.0.0.1:5000' # Espera a que Flask esté activo antes de iniciar
+          wait-on: 'http://127.0.0.1:5000'
           wait-on-timeout: 60
