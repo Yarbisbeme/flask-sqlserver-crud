@@ -50,10 +50,10 @@ jobs:
 
       - name: Create temporary .env file
         run: |
-          echo "SERVER=127.0.0.1" >> .env  # <--- CAMBIADO: Usar IP directa en lugar de localhost evita problemas de DNS de Docker
+          echo "SERVER=127.0.0.1" >> .env  
           echo "DATABASE=tempdb" >> .env
           echo "UID=sa" >> .env
-          echo "PWD=Strong_Pass_123!" >> .env
+          echo "DB_PASS=Strong_Pass_123!" >> .env
           echo "TABLE=colaboradores" >> .env
 
       - name: Wait for SQL Server to be ready
