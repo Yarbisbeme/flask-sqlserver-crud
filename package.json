@@ -1,0 +1,15 @@
+{
+  "name": "practica",
+  "version": "1.0.0",
+  "description": "Aplicación web desarrollada para aprender sobre Flask que implementa las operaciones básicas (Create, Read, Update, Delete) utilizando **Python**, **Flask** y **SQL Server**. Puedes usar este proyecto como gustes y hacer los cambios que quieras.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^15.14.2"
+  }
+}

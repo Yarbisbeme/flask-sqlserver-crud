@@ -1,0 +1,1 @@
+// Este archivo se ejecuta automáticamente antes de cada prueba de E2E.

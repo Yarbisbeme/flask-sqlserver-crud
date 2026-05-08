@@ -1,0 +1,51 @@
+# ==========================================
+# 🐍 Python & Virtual Environments (env)
+# ==========================================
+# Ignorar la carpeta del entorno virtual de Python
+env/
+venv/
+ENV/
+*.venv
+
+# Ignorar archivos compilados de Python
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ==========================================
+# 📦 Node & Cypress (JS)
+# ==========================================
+# Ignorar la carpeta de dependencias de Node (pesa muchísimo)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Evitar subir videos y screenshots que Cypress toma en fallos de test
+cypress/screenshots/
+cypress/videos/
+
+# ==========================================
+# 🔑 Seguridad & Variables de Entorno
+# ==========================================
+# NUNCA subir las credenciales reales
+.env
+
+# ==========================================
+# 💻 Editores de Código y SO
+# ==========================================
+# Configuraciones locales de VS Code u otros editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Archivos del sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store

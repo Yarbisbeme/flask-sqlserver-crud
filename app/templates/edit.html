@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Editar Registro{% endblock %}
+
+{% block body %}
+<div class="col-md-6 mx-auto">
+    <h2>Editar Colaborador</h2>
+    <form method="POST" action="/edit/{{ colaborador.id }}" class="card p-4 shadow-sm mt-3">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="{{ colaborador.nombre }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" name="apellido" class="form-control" value="{{ colaborador.apellido }}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ciudad</label>
+            <input type="text" name="ciudad" class="form-control" value="{{ colaborador.ciudad }}" required>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="/" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

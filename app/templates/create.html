@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Nuevo Registro{% endblock %}
+
+{% block body %}
+<div class="col-md-6 mx-auto">
+    <h2>Agregar Colaborador</h2>
+    <form method="POST" action="/create" class="card p-4 shadow-sm mt-3">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <!-- El atributo name='nombre' es lo que atrapa request.form['nombre'] en Python -->
+            <input type="text" name="nombre" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input type="text" name="apellido" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ciudad</label>
+            <input type="text" name="ciudad" class="form-control" required>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="/" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
